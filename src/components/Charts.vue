@@ -1,9 +1,9 @@
 <template>
   <div style="height: 600px; width: 600px">
     <vue3-chart-js
-      :id="doughnutChart.id"
-      :type="doughnutChart.type"
-      :data="doughnutChart.data"
+      :id="lineChart.id"
+      :type="lineChart.type"
+      :data="lineChart.data"
     ></vue3-chart-js>
   </div>
 </template>
@@ -12,8 +12,22 @@
 import Vue3ChartJs from "@j-t-mcc/vue3-chartjs";
 //create the data
 //also, this will be the step where you'll get your data from a database
-const stars = [135850, 52122, 148825, 16939, 9763];
-const frameworks = ["React", "Angular", "Vue", "Hyperapp", "Omi"];
+const price = [
+  59, 529.8, 61, 312.5, 60, 861.1, 54, 942.5, 47, 666.9, 42, 686.8, 48, 306.7,
+  45, 161.9, 49, 918.4, 48, 897.1,
+];
+const date = [
+  "Oct 24, 2021",
+  "Oct 17, 2021",
+  "Oct 10, 2021",
+  "Oct 03, 2021",
+  "Sep 26, 2021	",
+  "Sep 19, 2021",
+  "Sep 12, 2021",
+  "Sep 05, 2021",
+  "Aug 29, 2021",
+  "Aug 22, 2021",
+];
 
 export default {
   name: "App",
@@ -21,34 +35,22 @@ export default {
     Vue3ChartJs,
   },
   setup() {
-    const doughnutChart = {
-      id: "doughnut",
+    const lineChart = {
+      id: "line",
       type: "line",
       data: {
         //x axis
         //takes an array
-        labels: frameworks,
+        labels: date,
         //y axis
         //takes an array object
         datasets: [
           {
-            label: "Github Stars",
+            label: "Btc price in the last 10 weeks",
             //takes an array
-            data: stars,
-            backgroundColor: [
-              "rgba(255, 99, 132, 0.2)",
-              "rgba(54, 162, 235, 0.2)",
-              "rgba(255, 206, 86, 0.2)",
-              "rgba(75, 192, 192, 0.2)",
-              "rgba(153, 102, 255, 0.2)",
-            ],
-            borderColor: [
-              "rgba(255, 99, 132, 1)",
-              "rgba(54, 162, 235, 1)",
-              "rgba(255, 206, 86, 1)",
-              "rgba(75, 192, 192, 1)",
-              "rgba(153, 102, 255, 1)",
-            ],
+            data: price,
+            backgroundColor: ["yellow"],
+            borderColor: ["black"],
             borderWidth: 1,
           },
         ],
@@ -69,7 +71,7 @@ export default {
     // };
 
     return {
-      doughnutChart,
+      lineChart,
       // beforeRenderLogic,
     };
   },
